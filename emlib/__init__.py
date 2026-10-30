@@ -5,6 +5,6 @@ Positions are arrays whose last axis has length 3, so the same functions work fo
 point, a list of points, or a full meshgrid.
 """
 
-from . import fields, grids
+from . import fields, grids, relax, show
 
-__all__ = ["fields", "grids"]
+__all__ = ["fields", "grids", "relax", "show"]

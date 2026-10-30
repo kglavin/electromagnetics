@@ -19,5 +19,8 @@ uv sync
 ```
 uv run jupyter lab                      # notebooks
 uv run pytest                           # emlib tests
-uv run manim -ql animations/<module>/scenes.py <SceneName>   # render one scene at 480p
+uv run manim -ql --media_dir media/<module> animations/<module>/scenes.py <SceneName>   # render one scene at 480p
 ```
+
+Rendered scenes are embedded in the matching notebook through `emlib.show.animation(module, scene)`.
+If a scene has not been rendered the cell prints the render command. Set `EM_RENDER=1` to render on demand.

@@ -1,6 +1,6 @@
 """Module 1 animation: a vector field morphing from pure curl to pure divergence.
 
-Render with:  uv run manim -ql animations/m1_fields/scenes.py DivergenceVersusCurl
+Render with:  uv run manim -ql --media_dir media/m1_fields animations/m1_fields/scenes.py DivergenceVersusCurl
 """
 
 import numpy as np

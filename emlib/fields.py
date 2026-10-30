@@ -96,3 +96,24 @@ def line_integral(F, path):
     dl = np.diff(path, axis=0)
     mid = 0.5 * (path[1:] + path[:-1])
     return float(np.einsum("nk,nk->", F(mid), dl))
+
+
+def box_flux(F, h, lo, hi):
+    """Outward flux of a gridded vector field through an axis-aligned box.
+
+    F has shape (n0, n1[, n2], ndim) on a uniform grid with spacings h (one per axis).
+    lo and hi are inclusive index corners of the box. Each face integral uses the
+    trapezoid rule over the field samples lying on that face.
+    """
+    ndim = F.ndim - 1
+    lo, hi = tuple(int(v) for v in lo), tuple(int(v) for v in hi)
+    total = 0.0
+    for a in range(ndim):
+        for idx, sign in ((lo[a], -1.0), (hi[a], 1.0)):
+            sl = tuple(idx if b == a else slice(lo[b], hi[b] + 1) for b in range(ndim))
+            face = F[sl + (a,)]
+            for b in range(ndim):
+                if b != a:
+                    face = np.trapezoid(face, dx=h[b], axis=0)
+            total += sign * float(face)
+    return total

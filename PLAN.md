@@ -19,6 +19,7 @@ electromagnetics/
   README.md                 how to set up and run
   pyproject.toml            uv project, Python 3.12
   emlib/                    small shared library, tested
+    show.py                 embed rendered scenes in notebooks
     grids.py                meshgrid(indexing='ij') helpers, slices, flattening
     fields.py               point-charge E and V, discrete grad/div/curl, flux through boxes
     relax.py                Jacobi, Gauss-Seidel, sparse direct Laplace/Poisson
@@ -40,7 +41,7 @@ electromagnetics/
     recall_sheets/          one blank-sheet prompt file per module (md), no answers
     schedule.md             spaced-retrieval tracker per module (immediate, 24h, 7d, 30d)
     vector_calculus_ref.md  the coordinate-system and identity reference sheet
-  media/                    rendered mp4/png, gitignored
+  media/<module>/           rendered mp4/png per module, gitignored
 ```
 
 The book is reference only.
@@ -78,7 +79,7 @@ Six build modules. Each lists the book chapters it serves, the `emlib` code, the
 
 - emlib: `relax.py` (Jacobi and Gauss-Seidel with Numba, Dirichlet masks, sparse direct solve via `scipy.sparse.linalg.spsolve`), box flux in `fields.py`.
 - Notebooks: flux through a cube around a point charge vs enclosed charge; 2D Laplace between plates with an embedded conductor; mirror charge vs relaxed solution; capacitance from field energy for a non-standard geometry.
-- Manim: 2D potential surface relaxing from flat to steady state; 3D point charge with a Gaussian sphere whose surface arrows recolor by E dot dS.
+- Manim: 2D potential surface relaxing from flat to steady state; 3D point charge with a Gaussian sphere whose surface arrows recolor by E dot dS. Rendered scenes are embedded in the matching notebook via `emlib.show.animation`.
 - Verify: parallel-plate capacitance against epsilon_0 A / d; relaxed potential of a grounded plane plus point charge against the image-charge formula.
 
 ### M3. Dielectrics and bound charge (Ch 5, with 3D Plotly) 
@@ -134,7 +135,8 @@ A1. (done) Add `.gitignore` covering `*.epub`, `media/`, `.ipynb_checkpoints/`, 
 A2. (done) `uv init` with Python 3.12 and the E2 dependency list, install Cairo and Pango dev packages, confirm `manim` renders a one-line test scene.
 A3. (done) Create `emlib/` with grids and fields modules and 12 closed-form tests.
 A4. (done) Write the M1 notebooks, M1 Manim scene, M1 recall sheet.
-A5. Build M2.
+A5. (done) Build M2: box flux, relaxation and sparse solvers, field energy, four notebooks, two scenes, recall sheet.
+A6. Build M3.
 
 ## 9. Open questions
 

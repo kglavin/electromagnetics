@@ -1,0 +1,16 @@
+# reference text stays out of the repo
+*.epub
+*.pdf
+
+# python
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+*.egg-info/
+
+# jupyter
+.ipynb_checkpoints/
+
+# rendered output
+media/

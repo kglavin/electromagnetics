@@ -78,7 +78,7 @@ Six build modules. Each lists the book chapters it serves, the `emlib` code, the
 ### M2. Electrostatic relaxation and Gauss flux (Ch 4, 6, 7, 8)
 
 - emlib: `relax.py` (Jacobi and Gauss-Seidel with Numba, Dirichlet masks, sparse direct solve via `scipy.sparse.linalg.spsolve`), box flux in `fields.py`.
-- Notebooks: flux through a cube around a point charge vs enclosed charge; 2D Laplace between plates with an embedded conductor; mirror charge vs relaxed solution; capacitance from field energy for a non-standard geometry.
+- Notebooks: two primers (00a Gauss' law by symmetry with the sphere, shell, line, cylinder, plane, slab and conductor cases worked by hand and checked against brute-force superposition; 00b from Poisson's equation to a linear system, with the 1D tridiagonal matrix and Jacobi sweeps done by hand, the 2D stencil, masks, sparse assembly, uniqueness and Neumann conditions); flux through a cube around a point charge vs enclosed charge; 2D Laplace between plates with an embedded conductor; mirror charge vs relaxed solution; capacitance from field energy for a non-standard geometry.
 - Manim: 2D potential surface relaxing from flat to steady state; 3D point charge with a Gaussian sphere whose surface arrows recolor by E dot dS. Rendered scenes are embedded in the matching notebook via `emlib.show.animation`.
 - Verify: parallel-plate capacitance against epsilon_0 A / d; relaxed potential of a grounded plane plus point charge against the image-charge formula.
 

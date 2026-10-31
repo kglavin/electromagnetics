@@ -90,21 +90,30 @@ Every figure below is computed in a notebook, and each comes with a check agains
 Requires [`uv`](https://docs.astral.sh/uv/), `ffmpeg`, and the Cairo and Pango development
 libraries for Manim. The project is pinned to Python 3.12 because Numba and Manim have no 3.14 wheels.
 
+Tasks run through [`just`](https://just.systems), which `uv` can install:
+
 ```
-uv sync
+uv tool install rust-just
+just sync
 ```
 
 ## Run
 
 ```
-uv run jupyter lab                      # open the notebooks
-uv run pytest                           # run the emlib tests
-uv run python -m emlib.show            # render every scene at 1080p (skips ones already rendered)
-uv run manim -qh --media_dir media/<module> animations/<module>/scenes.py <SceneName>   # render one scene
+just                     # list the tasks
+just lab                 # open the notebooks in JupyterLab
+just test                # run the emlib tests
+just render              # render every scene at 1080p (skips ones already rendered)
+just render m4_magnetostatics            # render one module's scenes
+just scene m6_waves PlaneWave            # render one scene
+just render-quick        # quick 480p renders
+just check-notebooks     # execute every notebook top to bottom (or pass a folder or a file)
+just check               # tests plus every notebook
 ```
 
-Scenes render at 1080p60. `uv run python -m emlib.show --quality l` renders quick 480p versions,
-and notebooks fall back to those when the 1080p video is missing. `--jobs N` renders N modules at once.
+Each task is a thin wrapper around a `uv run` command listed in the [justfile](justfile), so the
+commands also work without `just`. Scenes render at 1080p60; notebooks fall back to 480p renders
+when the 1080p video is missing.
 
 Notebooks embed rendered scenes through `emlib.show.animation(module, scene)`. If a scene has not
 been rendered, the cell prints its render command. Set `EM_RENDER=1` to render missing scenes on
@@ -129,6 +138,7 @@ notebooks/<module>/    primers (00x) and main notebooks (01, 02, ...)
 animations/<module>/   Manim scenes for that module
 study/                 recall sheets, retrieval schedule, vector calculus reference
 docs/images/           the stills and GIFs used in this README
+justfile               tasks: sync, test, lab, render, check
 PLAN.md                roadmap, ground rules and open questions
 ```
 

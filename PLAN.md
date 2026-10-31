@@ -55,7 +55,7 @@ The book is reference only.
 E1. `uv` project pinned to Python 3.12. Reason: Numba and Manim Community have no 3.14 wheels, and the platform is aarch64 Linux.
 E2. Dependencies: numpy, scipy, matplotlib, sympy, numba, plotly, jupyterlab, ipywidgets, pytest, manim.
 E3. Manim system deps: ffmpeg is present. Cairo and Pango dev libraries need installing in the devcontainer. LaTeX is optional and we start without it, using `Text` instead of `MathTex` until a TeX install is justified.
-E4. A `make` or `uv run` task per target: `test`, `lab`, `render MODULE`.
+E4. (done) A `justfile` with tasks `sync`, `test`, `lab`, `render [MODULE...]`, `scene MODULE NAME`, `check-notebooks` and `check`. `just` installs with `uv tool install rust-just`.
 
 ## 4. Notebook template
 

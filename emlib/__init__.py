@@ -5,14 +5,16 @@ Positions are arrays whose last axis has length 3, so the same functions work fo
 point, a list of points, or a full meshgrid.
 """
 
-from . import biot_savart, circuits, dielectrics, fields, grids, integrators, magnetization, percolation, relax, show
+from . import biot_savart, circuits, dielectrics, fdtd, fields, grids, induction, integrators, magnetization, percolation, relax, show
 
 __all__ = [
     "biot_savart",
     "circuits",
     "dielectrics",
+    "fdtd",
     "fields",
     "grids",
+    "induction",
     "integrators",
     "magnetization",
     "percolation",

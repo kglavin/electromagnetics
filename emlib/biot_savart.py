@@ -83,6 +83,24 @@ def wire_B(mid, dl, I, obs, chunk=512):
     return (MU0 * I / (4.0 * np.pi)) * B.reshape(obs.shape)
 
 
+def wire_A(mid, dl, I, obs, chunk=512):
+    """Vector potential (Coulomb gauge) of current I along segments: (mu0 I / 4 pi) sum dl / |r - r'|.
+
+    Same conventions as wire_B. The curl of the result is wire_B away from the wire.
+    """
+    mid, dl = np.asarray(mid, dtype=float), np.asarray(dl, dtype=float)
+    obs = np.asarray(obs, dtype=float)
+    flat = obs.reshape(-1, 3)
+    A = np.zeros_like(flat)
+    for start in range(0, mid.shape[0], chunk):
+        m, d = mid[start : start + chunk], dl[start : start + chunk]
+        dist = np.linalg.norm(flat[:, None, :] - m[None, :, :], axis=-1)
+        with np.errstate(divide="ignore"):
+            w = np.where(dist > 0, 1.0 / dist, 0.0)
+        A += w @ d
+    return (MU0 * I / (4.0 * np.pi)) * A.reshape(obs.shape)
+
+
 # Closed forms used as tests.
 
 

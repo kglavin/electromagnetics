@@ -10,7 +10,7 @@ algorithm reconstruction from a blank editor, unassisted exercises, then spaced 
 | M3 Dielectrics and bound charge | 5 | recall_sheets/m3_dielectrics.md | | | | |
 | M4 Magnetostatics | 11, 12, 13 | recall_sheets/m4_magnetostatics.md | | | | |
 | M5 Circuits and disordered media | 9, 10, 16 | recall_sheets/m5_circuits.md | | | | |
-| M6 Induction, Maxwell, waves | 14, 15, 17 | | | | | |
+| M6 Induction, Maxwell, waves | 14, 15, 17 | recall_sheets/m6_waves.md | | | | |
 
 Mark a cell with the date when the blank-sheet reconstruction for that module was done without notes.
 

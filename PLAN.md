@@ -27,6 +27,7 @@ electromagnetics/
     percolation.py          random resistor lattice, sparse KCL solve
     circuits.py             conductance networks, modified nodal analysis (DC and phasor), conducting sheets
     fdtd.py                 1D/2D Yee solver, CFL check, Poynting
+    induction.py            flux through loops, emf, Neumann mutual inductance
     dielectrics.py          bound charge, D field, div(eps grad V) solver
     integrators.py          Boris pusher, RK4 for particles and circuits
     magnetization.py        bound currents from M, the H field
@@ -108,9 +109,9 @@ Six build modules. Each lists the book chapters it serves, the `emlib` code, the
 
 ### M6. Induction, Maxwell, waves (Ch 14, 15, 17)
 
-- emlib: `fdtd.py` (1D Yee grid, then 2D TE/TM, CFL enforced, Poynting on the grid), Neumann mutual inductance in `biot_savart.py`.
-- Notebooks: flux through a moving loop and numerical emf; mutual inductance of two non-coaxial loops; 1D FDTD pulse with reflection at a dielectric step; 2D FDTD point source with S(x,y,t).
-- Manim: 3D plane wave with E along y, B along z, Poynting arrow along x and an energy-flux counter.
+- emlib: `fdtd.py` (1D Yee grid with materials, conductivity, Mur or PEC ends and co-located probes; 2D TM with a graded matched lossy frame; Courant limit enforced; Poynting and energy on the grid), `induction.py` (disk flux, emf from a flux series, Neumann mutual inductance, exact coaxial-loop M, solenoid and ring inductance), `wire_A` in `biot_savart.py`.
+- Notebooks: four self-contained primers (00a emf, motional emf and Faraday's law for chapter 14; 00b inductance, mutual inductance and magnetic energy for chapter 15; 00c displacement current, Maxwell's equations and electromagnetic waves for chapter 17; 00d from Maxwell's equations to the Yee grid); flux through a moving loop and numerical emf; mutual inductance of two non-coaxial loops; 1D FDTD pulse with reflection at a dielectric step, antireflection layer and energy balance; 2D FDTD point source with S(x,y,t) and slit diffraction.
+- Manim: `PlaneWave`, a 3D plane wave with E along y, B along z, Poynting arrow along x and an energy-flux counter (primer 00c). Primer scenes: `FaradayInduction` (00a and notebook 01), `CoupledCoils` (00b and notebook 02), `YeeLeapfrog` (00d and notebook 03).
 - Verify: pulse speed equals c in the 1D FDTD; Neumann formula for coaxial loops against the known series result.
 
 ## 6. Build order
@@ -142,7 +143,7 @@ A5. (done) Build M2: box flux, relaxation and sparse solvers, field energy, four
 A6. (done) Build M3: dielectrics module with varying-permittivity solver, eleven tests, two notebooks, one scene, recall sheet.
 A7. (done) Build M4: Biot-Savart, integrators and magnetization modules with 17 tests, three primers, four notebooks, one scene, recall sheet.
 A8. (done) Build M5: circuits and percolation modules and rk4_ode with 14 tests, four primers, four notebooks, four scenes, recall sheet.
-A9. Build M6.
+A9. (done) Build M6: FDTD and induction modules and wire_A with 14 tests, four primers, four notebooks, four scenes, recall sheet.
 
 ## 9. Open questions
 

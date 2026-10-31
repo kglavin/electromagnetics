@@ -28,6 +28,7 @@ electromagnetics/
     fdtd.py                 1D/2D Yee solver, CFL check, Poynting
     dielectrics.py          bound charge, D field, div(eps grad V) solver
     integrators.py          Boris pusher, RK4 for particles and circuits
+    magnetization.py        bound currents from M, the H field
   tests/                    pytest, closed-form comparisons for every emlib function
   notebooks/
     m1_fields/              one folder per roadmap module, not per book chapter
@@ -92,9 +93,9 @@ Six build modules. Each lists the book chapters it serves, the `emlib` code, the
 
 ### M4. Magnetostatics and Biot-Savart (Ch 11, 12, 13)
 
-- emlib: `biot_savart.py` (parametric curve to segments, vectorized sum over segments and grid points), `integrators.py` Boris pusher.
-- Notebooks: B of a circular loop and a Helmholtz pair; B of a finite solenoid vs mu_0 n I; charged particle in crossed E and B with Boris vs RK4 energy drift; curl of M for a non-uniform magnetization.
-- Manim: 3D Helmholtz coil with field lines traced as moving particles following B.
+- emlib: `biot_savart.py` (polyline to segments, loop, straight wire, helix and Helmholtz builders, vectorized chunked Biot-Savart sum, closed forms for the wire, loop axis, solenoid axis and dipole), `integrators.py` (Boris pusher and RK4 with callable or constant fields), `magnetization.py` (J_b = curl M, K_b = M x n, H).
+- Notebooks: three self-contained primers (00a the magnetic field, Lorentz force, cyclotron motion, drifts, torque and the Biot-Savart law for chapter 11; 00b flux, div B = 0, Ampere's law by symmetry, the electrostatics comparison and the vector potential for chapters 11.3 and 12; 00c magnetization, bound currents, H, materials, boundary conditions and magnetic circuits for chapter 13); B of a circular loop and a Helmholtz pair; B of a finite solenoid vs mu_0 n I with Ampere circulations on a grid; charged particle in crossed E and B with Boris vs RK4 energy drift and a magnetic mirror; bound currents of a magnetized cylinder and the equivalence with a solenoid.
+- Manim: `HelmholtzFieldLines`, a 3D Helmholtz pair with field lines traced by moving particles following B, embedded in notebook 01.
 - Verify: on-axis loop field against the closed form; long straight wire against mu_0 I / 2 pi r.
 
 ### M5. Circuits and disordered media (Ch 9, 10, 16)
@@ -138,7 +139,8 @@ A3. (done) Create `emlib/` with grids and fields modules and 12 closed-form test
 A4. (done) Write the M1 notebooks, M1 Manim scene, M1 recall sheet.
 A5. (done) Build M2: box flux, relaxation and sparse solvers, field energy, four notebooks, two scenes, recall sheet.
 A6. (done) Build M3: dielectrics module with varying-permittivity solver, eleven tests, two notebooks, one scene, recall sheet.
-A7. Build M4.
+A7. (done) Build M4: Biot-Savart, integrators and magnetization modules with 17 tests, three primers, four notebooks, one scene, recall sheet.
+A8. Build M5.
 
 ## 9. Open questions
 

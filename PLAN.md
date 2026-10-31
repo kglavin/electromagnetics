@@ -70,7 +70,7 @@ Six build modules. Each lists the book chapters it serves, the `emlib` code, the
 ### M1. Vector calculus and field foundations (Ch 1, 2, 3)
 
 - emlib: `grids.py`, `fields.py` (point-charge E and V, superposition over arrays, `np.gradient` based E from V, discrete div and curl).
-- Notebooks: grids and `indexing='ij'` pitfalls; dipole and ring-of-charge E by direct summation; V on a grid and E = -grad V; line integral path independence check.
+- Notebooks: a four-part vector calculus primer following chapter 1 (00a vectors and fields, 00b integration, 00c differentiation, 00d coordinates and the integral theorems), each operator introduced as a measurement with hand-worked examples beside the code; grids and `indexing='ij'` pitfalls; dipole and ring-of-charge E by direct summation; V on a grid and E = -grad V; line integral path independence check.
 - SymPy: symbolic V, analytical E, div, curl, lambdified to NumPy, compared to the numerical versions.
 - Manim: 2D vector field morphing from (-y, x) to (x, y) with a paddlewheel marker that spins only in the curl region.
 - Verify: numerical E from gridded V of a point charge against Coulomb's law. Curl of a gradient field is zero to grid precision.

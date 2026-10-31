@@ -26,6 +26,7 @@ electromagnetics/
     biot_savart.py          parametric wire -> segments -> B on grid
     percolation.py          random resistor lattice, sparse KCL solve
     fdtd.py                 1D/2D Yee solver, CFL check, Poynting
+    dielectrics.py          bound charge, D field, div(eps grad V) solver
     integrators.py          Boris pusher, RK4 for particles and circuits
   tests/                    pytest, closed-form comparisons for every emlib function
   notebooks/
@@ -84,10 +85,10 @@ Six build modules. Each lists the book chapters it serves, the `emlib` code, the
 
 ### M3. Dielectrics and bound charge (Ch 5, with 3D Plotly) 
 
-- emlib: discrete divergence of a vector field on a grid, D = epsilon_0 E + P.
+- emlib: `dielectrics.py` (bound volume and surface charge, D = epsilon_0 E + P, dipole-pair sources, sparse solver for div(eps grad V) = -rho_f in 2D and 3D with harmonic-mean face permittivity).
 - Notebooks: non-uniform P(x,y,z), rho_b = -div P, sigma_b at a slab boundary; Plotly `Isosurface` and `Volume` for V shells and |D| contours.
 - Manim: two-panel scene, free charge on plates beside dipoles aligning in the dielectric, then bound surface charge forming and the internal E shrinking.
-- Verify: uniformly polarized slab, total bound charge sums to zero; interior E reduced by the expected factor.
+- Verify: uniformly polarized sphere from bound surface charge gives E = -P/3eps0 inside; slab capacitor matches the series formula with D continuous; dielectric sphere in a uniform field gives E_in = 3/(eps_r+2) E0.
 
 ### M4. Magnetostatics and Biot-Savart (Ch 11, 12, 13)
 
@@ -136,7 +137,8 @@ A2. (done) `uv init` with Python 3.12 and the E2 dependency list, install Cairo 
 A3. (done) Create `emlib/` with grids and fields modules and 12 closed-form tests.
 A4. (done) Write the M1 notebooks, M1 Manim scene, M1 recall sheet.
 A5. (done) Build M2: box flux, relaxation and sparse solvers, field energy, four notebooks, two scenes, recall sheet.
-A6. Build M3.
+A6. (done) Build M3: dielectrics module with varying-permittivity solver, eleven tests, two notebooks, one scene, recall sheet.
+A7. Build M4.
 
 ## 9. Open questions
 

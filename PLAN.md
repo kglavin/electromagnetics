@@ -74,28 +74,28 @@ Six build modules. Each lists the book chapters it serves, the `emlib` code, the
 - emlib: `grids.py`, `fields.py` (point-charge E and V, superposition over arrays, `np.gradient` based E from V, discrete div and curl).
 - Notebooks: a four-part vector calculus primer following chapter 1 (00a vectors and fields, 00b integration, 00c differentiation, 00d coordinates and the integral theorems) and a physics primer for chapters 2 and 3 (00e charge, Coulomb's law, field and potential). Every primer is a self-contained lesson: a full prose exposition of the ideas, each operator or law introduced as a measurement, hand-worked examples beside the code, a key-results sheet and warm-up answers, so the module can be followed without the book chapters; grids and `indexing='ij'` pitfalls; dipole and ring-of-charge E by direct summation; V on a grid and E = -grad V; line integral path independence check.
 - SymPy: symbolic V, analytical E, div, curl, lambdified to NumPy, compared to the numerical versions.
-- Manim: 2D vector field morphing from (-y, x) to (x, y) with a paddlewheel marker that spins only in the curl region.
+- Manim: 2D vector field morphing from (-y, x) to (x, y) with a paddlewheel marker that spins only in the curl region (also embedded in primer 00c). Primer scenes: `DotProductShadow` and `CrossProductArea` (00a), `LineIntegralPaths` (00b, path independence), `ShrinkingInstruments` (00c, divergence and curl as limits), `InternalFacesCancel` and `InternalEdgesCancel` (00d, why the divergence and Stokes theorems hold), `RingConvergence` (00e, point charges converging to a continuous ring).
 - Verify: numerical E from gridded V of a point charge against Coulomb's law. Curl of a gradient field is zero to grid precision.
 
 ### M2. Electrostatic relaxation and Gauss flux (Ch 4, 6, 7, 8)
 
 - emlib: `relax.py` (Jacobi and Gauss-Seidel with Numba, Dirichlet masks, sparse direct solve via `scipy.sparse.linalg.spsolve`), box flux in `fields.py`.
 - Notebooks: three self-contained primers (00a Gauss' law by symmetry with the sphere, shell, line, cylinder, plane, slab and conductor cases worked by hand and checked against brute-force superposition; 00b from Poisson's equation to a linear system, with the 1D tridiagonal matrix and Jacobi sweeps done by hand, the 2D stencil, masks, sparse assembly, uniqueness, Neumann conditions and recovering E and charge from V; 00c conductors in equilibrium, the method of images, capacitance and field energy for chapters 7 and 8); flux through a cube around a point charge vs enclosed charge; 2D Laplace between plates with an embedded conductor; mirror charge vs relaxed solution; capacitance from field energy for a non-standard geometry.
-- Manim: 2D potential surface relaxing from flat to steady state; 3D point charge with a Gaussian sphere whose surface arrows recolor by E dot dS. Rendered scenes are embedded in the matching notebook via `emlib.show.animation`.
+- Manim: 2D potential surface relaxing from flat to steady state; 3D point charge with a Gaussian sphere whose surface arrows recolor by E dot dS. Rendered scenes are embedded in the matching notebook via `emlib.show.animation`, and also in primers 00a and 00b. Primer scenes: `SolidAngleFlux` (00a, why the flux is independent of the surface), `JacobiModes` (00b, hand sweeps and mode decay), `ConductorEquilibrium` and `ImageCharge` (00c).
 - Verify: parallel-plate capacitance against epsilon_0 A / d; relaxed potential of a grounded plane plus point charge against the image-charge formula.
 
 ### M3. Dielectrics and bound charge (Ch 5, with 3D Plotly) 
 
 - emlib: `dielectrics.py` (bound volume and surface charge, D = epsilon_0 E + P, dipole-pair sources, sparse solver for div(eps grad V) = -rho_f in 2D and 3D with harmonic-mean face permittivity).
 - Notebooks: a self-contained primer for chapter 5 (00a dipoles, polarization, bound charge, D, linear dielectrics and boundary conditions, with the slab capacitor and the dielectric cylinder checked against the solver); non-uniform P(x,y,z), rho_b = -div P, sigma_b at a slab boundary; Plotly `Isosurface` and `Volume` for V shells and |D| contours.
-- Manim: two-panel scene, free charge on plates beside dipoles aligning in the dielectric, then bound surface charge forming and the internal E shrinking.
+- Manim: two-panel scene, free charge on plates beside dipoles aligning in the dielectric, then bound surface charge forming and the internal E shrinking (also embedded in primer 00a). Primer scene: `DisplacedBalls` (00a, the polarized sphere as two displaced balls of charge).
 - Verify: uniformly polarized sphere from bound surface charge gives E = -P/3eps0 inside; slab capacitor matches the series formula with D continuous; dielectric sphere in a uniform field gives E_in = 3/(eps_r+2) E0.
 
 ### M4. Magnetostatics and Biot-Savart (Ch 11, 12, 13)
 
 - emlib: `biot_savart.py` (polyline to segments, loop, straight wire, helix and Helmholtz builders, vectorized chunked Biot-Savart sum, closed forms for the wire, loop axis, solenoid axis and dipole), `integrators.py` (Boris pusher and RK4 with callable or constant fields), `magnetization.py` (J_b = curl M, K_b = M x n, H).
 - Notebooks: three self-contained primers (00a the magnetic field, Lorentz force, cyclotron motion, drifts, torque and the Biot-Savart law for chapter 11; 00b flux, div B = 0, Ampere's law by symmetry, the electrostatics comparison and the vector potential for chapters 11.3 and 12; 00c magnetization, bound currents, H, materials, boundary conditions and magnetic circuits for chapter 13); B of a circular loop and a Helmholtz pair; B of a finite solenoid vs mu_0 n I with Ampere circulations on a grid; charged particle in crossed E and B with Boris vs RK4 energy drift and a magnetic mirror; bound currents of a magnetized cylinder and the equivalence with a solenoid.
-- Manim: `HelmholtzFieldLines`, a 3D Helmholtz pair with field lines traced by moving particles following B, embedded in notebook 01.
+- Manim: `HelmholtzFieldLines`, a 3D Helmholtz pair with field lines traced by moving particles following B, embedded in notebook 01. Primer scenes: `ChargedParticleMotion` (00a, circles, helix, E x B drift, torque), `AmpereLoop` (00b), `BoundCurrents` (00c).
 - Verify: on-axis loop field against the closed form; long straight wire against mu_0 I / 2 pi r.
 
 ### M5. Circuits and disordered media (Ch 9, 10, 16)

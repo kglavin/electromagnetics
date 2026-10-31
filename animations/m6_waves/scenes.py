@@ -11,10 +11,10 @@ YeeLeapfrog       primer 00d and notebook 03: E on nodes and H on half nodes upd
                   moves right; then the same grid at Courant number 1.02 blows up.
 
 Render with:
-  uv run manim -ql --media_dir media/m6_waves animations/m6_waves/scenes.py FaradayInduction
-  uv run manim -ql --media_dir media/m6_waves animations/m6_waves/scenes.py CoupledCoils
-  uv run manim -ql --media_dir media/m6_waves animations/m6_waves/scenes.py PlaneWave
-  uv run manim -ql --media_dir media/m6_waves animations/m6_waves/scenes.py YeeLeapfrog
+  uv run manim -qh --media_dir media/m6_waves animations/m6_waves/scenes.py FaradayInduction
+  uv run manim -qh --media_dir media/m6_waves animations/m6_waves/scenes.py CoupledCoils
+  uv run manim -qh --media_dir media/m6_waves animations/m6_waves/scenes.py PlaneWave
+  uv run manim -qh --media_dir media/m6_waves animations/m6_waves/scenes.py YeeLeapfrog
 """
 
 import numpy as np

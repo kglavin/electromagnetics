@@ -1,15 +1,15 @@
 """Module 1 animation: a vector field morphing from pure curl to pure divergence.
 
-Render with:  uv run manim -ql --media_dir media/m1_fields animations/m1_fields/scenes.py DivergenceVersusCurl
+Render with:  uv run manim -qh --media_dir media/m1_fields animations/m1_fields/scenes.py DivergenceVersusCurl
 
 Primer scenes:
-  uv run manim -ql --media_dir media/m1_fields animations/m1_fields/scenes.py LineIntegralPaths     (primer 00b, section 3.3)
-  uv run manim -ql --media_dir media/m1_fields animations/m1_fields/scenes.py InternalFacesCancel   (primer 00d, section 3.4)
-  uv run manim -ql --media_dir media/m1_fields animations/m1_fields/scenes.py InternalEdgesCancel   (primer 00d, section 3.5)
-  uv run manim -ql --media_dir media/m1_fields animations/m1_fields/scenes.py DotProductShadow      (primer 00a, section 3.2)
-  uv run manim -ql --media_dir media/m1_fields animations/m1_fields/scenes.py CrossProductArea      (primer 00a, section 3.3)
-  uv run manim -ql --media_dir media/m1_fields animations/m1_fields/scenes.py ShrinkingInstruments  (primer 00c, section 3.3)
-  uv run manim -ql --media_dir media/m1_fields animations/m1_fields/scenes.py RingConvergence       (primer 00e, section 3.4)
+  uv run manim -qh --media_dir media/m1_fields animations/m1_fields/scenes.py LineIntegralPaths     (primer 00b, section 3.3)
+  uv run manim -qh --media_dir media/m1_fields animations/m1_fields/scenes.py InternalFacesCancel   (primer 00d, section 3.4)
+  uv run manim -qh --media_dir media/m1_fields animations/m1_fields/scenes.py InternalEdgesCancel   (primer 00d, section 3.5)
+  uv run manim -qh --media_dir media/m1_fields animations/m1_fields/scenes.py DotProductShadow      (primer 00a, section 3.2)
+  uv run manim -qh --media_dir media/m1_fields animations/m1_fields/scenes.py CrossProductArea      (primer 00a, section 3.3)
+  uv run manim -qh --media_dir media/m1_fields animations/m1_fields/scenes.py ShrinkingInstruments  (primer 00c, section 3.3)
+  uv run manim -qh --media_dir media/m1_fields animations/m1_fields/scenes.py RingConvergence       (primer 00e, section 3.4)
 """
 
 import numpy as np

@@ -10,10 +10,10 @@ PercolationBackbone  primer 00d and notebook 04: a 20 by 20 bond lattice between
                      0.3 to 0.7, a spanning cluster forms and the current flows on its backbone.
 
 Render with:
-  uv run manim -ql --media_dir media/m5_circuits animations/m5_circuits/scenes.py DriftCurrent
-  uv run manim -ql --media_dir media/m5_circuits animations/m5_circuits/scenes.py CapacitorCharging
-  uv run manim -ql --media_dir media/m5_circuits animations/m5_circuits/scenes.py PhasorRLC
-  uv run manim -ql --media_dir media/m5_circuits animations/m5_circuits/scenes.py PercolationBackbone
+  uv run manim -qh --media_dir media/m5_circuits animations/m5_circuits/scenes.py DriftCurrent
+  uv run manim -qh --media_dir media/m5_circuits animations/m5_circuits/scenes.py CapacitorCharging
+  uv run manim -qh --media_dir media/m5_circuits animations/m5_circuits/scenes.py PhasorRLC
+  uv run manim -qh --media_dir media/m5_circuits animations/m5_circuits/scenes.py PercolationBackbone
 """
 
 import numpy as np

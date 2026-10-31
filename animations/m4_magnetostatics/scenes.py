@@ -14,10 +14,10 @@ BoundCurrents          primer 00c, section 3.2: aligned atomic loops cancel on s
                        current K_b = M x n; a non-uniform M leaves J_b = curl M inside.
 
 Render with:
-  uv run manim -ql --media_dir media/m4_magnetostatics animations/m4_magnetostatics/scenes.py HelmholtzFieldLines
-  uv run manim -ql --media_dir media/m4_magnetostatics animations/m4_magnetostatics/scenes.py ChargedParticleMotion
-  uv run manim -ql --media_dir media/m4_magnetostatics animations/m4_magnetostatics/scenes.py AmpereLoop
-  uv run manim -ql --media_dir media/m4_magnetostatics animations/m4_magnetostatics/scenes.py BoundCurrents
+  uv run manim -qh --media_dir media/m4_magnetostatics animations/m4_magnetostatics/scenes.py HelmholtzFieldLines
+  uv run manim -qh --media_dir media/m4_magnetostatics animations/m4_magnetostatics/scenes.py ChargedParticleMotion
+  uv run manim -qh --media_dir media/m4_magnetostatics animations/m4_magnetostatics/scenes.py AmpereLoop
+  uv run manim -qh --media_dir media/m4_magnetostatics animations/m4_magnetostatics/scenes.py BoundCurrents
 """
 
 import numpy as np

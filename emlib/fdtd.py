@@ -122,13 +122,17 @@ def absorbing_profile(n, n_layer, sigma_max, order=3):
 
 
 def fdtd_2d_tm(nx, ny, dx, n_steps, courant=0.5, eps_r=1.0, source=None, src_index=None,
-               n_layer=20, layer_strength=1.0, probes=(), snapshot_every=0):
+               n_layer=20, layer_strength=1.0, probes=(), snapshot_every=0, pec=None, callback=None):
     """Run a 2D TM Yee simulation (Ez, Hx, Hy) on nx by ny E nodes with spacing dx.
 
     eps_r: scalar or (nx, ny) array. source(t) is added to Ez[src_index] each step.
     n_layer cells of graded matched loss line every edge (n_layer = 0 gives PEC walls);
     layer_strength scales the conductivity (1 is a good default for a few-percent reflection).
     probes: list of (i, j) recorded every step.
+    pec: optional (nx, ny) bool mask of perfect conductor; Ez is held at zero there, which makes
+    walls, slits and metal obstacles.
+    callback: optional callback(k, Ez, Hx, Hy) called after every step k = 1 .. n_steps, with Ez at
+    time k dt and Hx, Hy at (k - 1/2) dt. Use it to record fluxes or energies; do not modify the arrays.
 
     Returns a dict with x, y, dt, t, Ez, Hx, Hy (final), probe_E (n_steps + 1, n_probes),
     snapshots (list of Ez copies) and sigma (the electric conductivity used).
@@ -166,8 +170,12 @@ def fdtd_2d_tm(nx, ny, dx, n_steps, courant=0.5, eps_r=1.0, source=None, src_ind
         curl[1:-1, 1:-1] = (Hy[1:, 1:-1] - Hy[:-1, 1:-1]) - (Hx[1:-1, 1:] - Hx[1:-1, :-1])
         Ez = ca * Ez + cb * curl
         Ez[0, :] = Ez[-1, :] = Ez[:, 0] = Ez[:, -1] = 0.0
+        if pec is not None:
+            Ez[pec] = 0.0
         if source is not None:
             Ez[src_index] += source((k + 1) * dt)
+        if callback is not None:
+            callback(k + 1, Ez, Hx, Hy)
         for p, (i, j) in enumerate(probes):
             probe_E[k + 1, p] = Ez[i, j]
         if snapshot_every and (k + 1) % snapshot_every == 0:

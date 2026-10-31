@@ -9,8 +9,8 @@ of density +rho and -rho displaced by d. The overlap is neutral, the uncovered c
 surface charge P cos(theta), and the two interior ball fields add to the uniform -P / 3 eps0.
 
 Render with:
-  uv run manim -ql --media_dir media/m3_dielectrics animations/m3_dielectrics/scenes.py PolarizationPanels
-  uv run manim -ql --media_dir media/m3_dielectrics animations/m3_dielectrics/scenes.py DisplacedBalls
+  uv run manim -qh --media_dir media/m3_dielectrics animations/m3_dielectrics/scenes.py PolarizationPanels
+  uv run manim -qh --media_dir media/m3_dielectrics animations/m3_dielectrics/scenes.py DisplacedBalls
 """
 
 import numpy as np

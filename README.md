@@ -24,7 +24,7 @@ book's table of contents.
 | M5 Circuits and disordered media | 9, 10, 16 | 4 | 4 | done |
 | M6 Induction, Maxwell, waves | 14, 15, 17 | 4 | 4 | done |
 
-All six modules are finished: 20 primers, 21 main notebooks, 32 animated scenes and 77 library tests. [PLAN.md](PLAN.md) has the full roadmap.
+All six modules are finished: 20 primers, 21 main notebooks, 28 animated scenes and 80 library tests. [PLAN.md](PLAN.md) has the full roadmap.
 
 ## How a module is organised
 
@@ -43,7 +43,7 @@ All six modules are finished: 20 primers, 21 main notebooks, 32 animated scenes 
 
 ## Animations
 
-A selection of the 32 scenes. Each one is embedded in the primer or notebook that teaches its idea.
+A selection of the 28 scenes. Each one is embedded in the primer or notebook that teaches its idea.
 
 <table>
 <tr>
@@ -99,8 +99,12 @@ uv sync
 ```
 uv run jupyter lab                      # open the notebooks
 uv run pytest                           # run the emlib tests
-uv run manim -ql --media_dir media/<module> animations/<module>/scenes.py <SceneName>   # render one scene at 480p
+uv run python -m emlib.show            # render every scene at 1080p (skips ones already rendered)
+uv run manim -qh --media_dir media/<module> animations/<module>/scenes.py <SceneName>   # render one scene
 ```
+
+Scenes render at 1080p60. `uv run python -m emlib.show --quality l` renders quick 480p versions,
+and notebooks fall back to those when the 1080p video is missing. `--jobs N` renders N modules at once.
 
 Notebooks embed rendered scenes through `emlib.show.animation(module, scene)`. If a scene has not
 been rendered, the cell prints its render command. Set `EM_RENDER=1` to render missing scenes on

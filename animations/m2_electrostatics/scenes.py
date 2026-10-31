@@ -8,12 +8,12 @@ ImageCharge         a charge approaching a grounded plane, its image and the ind
 SolidAngleFlux      a cone from the charge cuts a sphere and a lumpy surface: equal flux per solid angle; outside, pairs cancel
 
 Render with:
-  uv run manim -ql --media_dir media/m2_electrostatics animations/m2_electrostatics/scenes.py RelaxationSurface
-  uv run manim -ql --media_dir media/m2_electrostatics animations/m2_electrostatics/scenes.py GaussianSphereFlux
-  uv run manim -ql --media_dir media/m2_electrostatics animations/m2_electrostatics/scenes.py JacobiModes
-  uv run manim -ql --media_dir media/m2_electrostatics animations/m2_electrostatics/scenes.py ConductorEquilibrium
-  uv run manim -ql --media_dir media/m2_electrostatics animations/m2_electrostatics/scenes.py ImageCharge
-  uv run manim -ql --media_dir media/m2_electrostatics animations/m2_electrostatics/scenes.py SolidAngleFlux
+  uv run manim -qh --media_dir media/m2_electrostatics animations/m2_electrostatics/scenes.py RelaxationSurface
+  uv run manim -qh --media_dir media/m2_electrostatics animations/m2_electrostatics/scenes.py GaussianSphereFlux
+  uv run manim -qh --media_dir media/m2_electrostatics animations/m2_electrostatics/scenes.py JacobiModes
+  uv run manim -qh --media_dir media/m2_electrostatics animations/m2_electrostatics/scenes.py ConductorEquilibrium
+  uv run manim -qh --media_dir media/m2_electrostatics animations/m2_electrostatics/scenes.py ImageCharge
+  uv run manim -qh --media_dir media/m2_electrostatics animations/m2_electrostatics/scenes.py SolidAngleFlux
 """
 
 import numpy as np

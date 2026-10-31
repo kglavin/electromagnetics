@@ -109,7 +109,7 @@ Six build modules. Each lists the book chapters it serves, the `emlib` code, the
 
 ### M6. Induction, Maxwell, waves (Ch 14, 15, 17)
 
-- emlib: `fdtd.py` (1D Yee grid with materials, conductivity, Mur or PEC ends and co-located probes; 2D TM with a graded matched lossy frame; Courant limit enforced; Poynting and energy on the grid), `induction.py` (disk flux, emf from a flux series, Neumann mutual inductance, exact coaxial-loop M, solenoid and ring inductance), `wire_A` in `biot_savart.py`.
+- emlib: `fdtd.py` (1D Yee grid with materials, conductivity, Mur or PEC ends and co-located probes; 2D TM with a graded matched lossy frame, a perfect-conductor mask and a per-step callback; Courant limit enforced; Poynting and energy on the grid), `induction.py` (disk flux, emf from a flux series, Neumann mutual inductance, exact coaxial-loop M, solenoid and ring inductance), `wire_A` in `biot_savart.py`.
 - Notebooks: four self-contained primers (00a emf, motional emf and Faraday's law for chapter 14; 00b inductance, mutual inductance and magnetic energy for chapter 15; 00c displacement current, Maxwell's equations and electromagnetic waves for chapter 17; 00d from Maxwell's equations to the Yee grid); flux through a moving loop and numerical emf; mutual inductance of two non-coaxial loops; 1D FDTD pulse with reflection at a dielectric step, antireflection layer and energy balance; 2D FDTD point source with S(x,y,t) and slit diffraction.
 - Manim: `PlaneWave`, a 3D plane wave with E along y, B along z, Poynting arrow along x and an energy-flux counter (primer 00c). Primer scenes: `FaradayInduction` (00a and notebook 01), `CoupledCoils` (00b and notebook 02), `YeeLeapfrog` (00d and notebook 03).
 - Verify: pulse speed equals c in the 1D FDTD; Neumann formula for coaxial loops against the known series result.
@@ -148,4 +148,4 @@ A9. (done) Build M6: FDTD and induction modules and wire_A with 14 tests, four p
 ## 9. Open questions
 
 Q1. (decided) Notebooks are bunched by module, not by chapter. A module has as many topic notebooks as it needs, each kept under about 30 cells. Primers are exempt: they carry the teaching material and run to 25 to 38 cells and 5000 to 7000 words.
-Q2. Manim quality target: quick 480p renders for learning, or 1080p for sharing? Default is `-ql` during development.
+Q2. (decided) Manim quality is 1080p60 (`-qh`), since the videos are for our own study and not distributed. `uv run python -m emlib.show` renders every scene; 480p renders remain a fallback.

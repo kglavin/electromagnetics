@@ -101,3 +101,24 @@ def test_2d_absorbing_frame():
     early = fd.fdtd_2d_tm(n, n, dx, 900, courant=S, source=src, src_index=(150, 150), probes=[(190, 150)])
     late = fd.fdtd_2d_tm(n, n, dx, 1400, courant=S, source=src, src_index=(150, 150))
     assert np.abs(late["Ez"]).max() < 5e-3 * early["probe_E"][:, 0].max()
+
+
+def test_2d_pec_wall_blocks_and_callback_sees_every_step():
+    n, dx, S = 201, 1e-3, 0.5
+    dt = S * dx / fd.C0
+    w = 20 * dt
+    src = lambda t: fd.gaussian(t, 4 * w, w)
+    wall = np.zeros((n, n), dtype=bool)
+    wall[120:124, :] = True  # a solid conducting wall across the grid
+    seen = []
+    r = fd.fdtd_2d_tm(n, n, dx, 600, courant=S, source=src, src_index=(80, 100), probes=[(160, 100), (60, 100)],
+                      pec=wall, callback=lambda k, Ez, Hx, Hy: seen.append((k, float(np.abs(Ez[wall]).max()))))
+    open_run = fd.fdtd_2d_tm(n, n, dx, 600, courant=S, source=src, src_index=(80, 100), probes=[(160, 100)])
+    assert [k for k, _ in seen] == list(range(1, 601))
+    assert max(e for _, e in seen) == 0.0  # Ez stays zero inside the conductor
+    assert np.abs(r["probe_E"][:, 0]).max() == 0.0  # nothing gets through a solid wall
+    assert np.abs(open_run["probe_E"][:, 0]).max() > 1e-3
+    # without pec or callback the result is unchanged
+    base = fd.fdtd_2d_tm(n, n, dx, 200, courant=S, source=src, src_index=(80, 100))
+    again = fd.fdtd_2d_tm(n, n, dx, 200, courant=S, source=src, src_index=(80, 100), pec=np.zeros((n, n), bool), callback=lambda *a: None)
+    assert np.array_equal(base["Ez"], again["Ez"])

@@ -25,6 +25,7 @@ electromagnetics/
     relax.py                Jacobi, Gauss-Seidel, sparse direct Laplace/Poisson
     biot_savart.py          parametric wire -> segments -> B on grid
     percolation.py          random resistor lattice, sparse KCL solve
+    circuits.py             conductance networks, modified nodal analysis (DC and phasor), conducting sheets
     fdtd.py                 1D/2D Yee solver, CFL check, Poynting
     dielectrics.py          bound charge, D field, div(eps grad V) solver
     integrators.py          Boris pusher, RK4 for particles and circuits
@@ -100,9 +101,9 @@ Six build modules. Each lists the book chapters it serves, the `emlib` code, the
 
 ### M5. Circuits and disordered media (Ch 9, 10, 16)
 
-- emlib: `percolation.py` (random bond lattice, KCL sparse assembly, effective conductivity), nodal analysis solver, RLC ODE helpers in `integrators.py`.
-- Notebooks: 2D current density in a sheet with varying sigma(x,y); nodal analysis of an arbitrary network; percolation sweep of sigma_eff vs p across p_c = 0.5 for bonds; RC and RLC transients; Bode sweep of a multi-stage filter with complex impedance.
-- Manim: lattice current flow as p rises through p_c, backbone highlighted at the threshold.
+- emlib: `circuits.py` (one sparse Kirchhoff solver for any conductance graph, shared by circuits, sheets and lattices; modified nodal analysis with voltage sources, capacitors and inductors, at DC or as phasors; conducting sheets of varying sigma), `percolation.py` (random bond lattice, spanning test, Kirchhoff solve, effective conductivity, backbone), `rk4_ode` in `integrators.py`.
+- Notebooks: four self-contained primers (00a current, Ohm's law, resistance, Joule heating and charge conservation for chapter 9; 00b emf, Kirchhoff, nodal analysis, circuits as models and RC for chapters 10.1 to 10.3; 00c components, RL, LC and RLC transients, phasors, filters, resonance and the assumptions of circuit models for chapter 16; 00d disordered media and percolation for chapter 10.4); 2D current density in a sheet with varying sigma(x,y); nodal analysis of an arbitrary network; RC and RLC transients against phasors and a Bode sweep of a multi-stage filter; percolation sweep of sigma_eff vs p across p_c = 0.5 for bonds.
+- Manim: `PercolationBackbone`, lattice current flow as p rises through p_c with the backbone highlighted (primer 00d and notebook 04). Primer scenes: `DriftCurrent` (00a), `CapacitorCharging` (00b), `PhasorRLC` (00c and notebook 03).
 - Verify: nodal solver against a hand-solvable bridge circuit; series RLC resonance frequency against 1 / sqrt(LC).
 
 ### M6. Induction, Maxwell, waves (Ch 14, 15, 17)
@@ -140,7 +141,8 @@ A4. (done) Write the M1 notebooks, M1 Manim scene, M1 recall sheet.
 A5. (done) Build M2: box flux, relaxation and sparse solvers, field energy, four notebooks, two scenes, recall sheet.
 A6. (done) Build M3: dielectrics module with varying-permittivity solver, eleven tests, two notebooks, one scene, recall sheet.
 A7. (done) Build M4: Biot-Savart, integrators and magnetization modules with 17 tests, three primers, four notebooks, one scene, recall sheet.
-A8. Build M5.
+A8. (done) Build M5: circuits and percolation modules and rk4_ode with 14 tests, four primers, four notebooks, four scenes, recall sheet.
+A9. Build M6.
 
 ## 9. Open questions
 

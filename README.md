@@ -21,10 +21,10 @@ book's table of contents.
 | M2 Electrostatics: Gauss, Laplace, conductors, capacitance | 4, 6, 7, 8 | 3 | 4 | done |
 | M3 Dielectrics and bound charge | 5 | 1 | 2 | done |
 | M4 Magnetostatics | 11, 12, 13 | 3 | 4 | done |
-| M5 Circuits and disordered media | 9, 10, 16 | | | planned |
+| M5 Circuits and disordered media | 9, 10, 16 | 4 | 4 | done |
 | M6 Induction, Maxwell, waves | 14, 15, 17 | | | planned |
 
-The four finished modules contain 12 primers, 13 main notebooks, 24 animated scenes and 49 library
+The five finished modules contain 16 primers, 17 main notebooks, 28 animated scenes and 63 library
 tests. [PLAN.md](PLAN.md) has the full roadmap.
 
 ## How a module is organised
@@ -44,7 +44,7 @@ tests. [PLAN.md](PLAN.md) has the full roadmap.
 
 ## Animations
 
-A selection of the 24 scenes. Each one is embedded in the primer or notebook that teaches its idea.
+A selection of the 28 scenes. Each one is embedded in the primer or notebook that teaches its idea.
 
 <table>
 <tr>
@@ -119,7 +119,7 @@ A suggested path through a module:
 
 ```
 emlib/                 shared library: grids, fields, relax, dielectrics, biot_savart,
-                       integrators, magnetization, show
+                       integrators, magnetization, circuits, percolation, show
 tests/                 pytest, closed-form checks for every emlib function
 notebooks/<module>/    primers (00x) and main notebooks (01, 02, ...)
 animations/<module>/   Manim scenes for that module

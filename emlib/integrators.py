@@ -65,6 +65,22 @@ def rk4(x0, v0, q, m, E, B, dt, n_steps):
     return x, v
 
 
+def rk4_ode(f, y0, t):
+    """Classical RK4 for dy/dt = f(t, y) on the time grid t. Returns y with shape (len(t),) + shape(y0)."""
+    t = np.asarray(t, dtype=float)
+    y0 = np.asarray(y0)
+    y = np.zeros((len(t),) + y0.shape, dtype=np.result_type(y0.dtype, float))
+    y[0] = y0
+    for k in range(len(t) - 1):
+        dt, tk, yk = t[k + 1] - t[k], t[k], y[k]
+        k1 = f(tk, yk)
+        k2 = f(tk + 0.5 * dt, yk + 0.5 * dt * k1)
+        k3 = f(tk + 0.5 * dt, yk + 0.5 * dt * k2)
+        k4 = f(tk + dt, yk + dt * k3)
+        y[k + 1] = yk + dt / 6.0 * (k1 + 2 * k2 + 2 * k3 + k4)
+    return y
+
+
 def cyclotron_frequency(q, B, m):
     """Angular frequency |q| B / m of circular motion in a uniform field of magnitude B."""
     return abs(q) * B / m
